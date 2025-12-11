@@ -1,0 +1,10 @@
+C:\Users\ghali\Documents\tp1jeeghalilahlou\billing-service\src\main\java\com\example\billing\BillingServiceApplication.java
+C:\Users\ghali\Documents\tp1jeeghalilahlou\billing-service\src\main\java\com\example\billing\entities\Bill.java
+C:\Users\ghali\Documents\tp1jeeghalilahlou\billing-service\src\main\java\com\example\billing\entities\ProductItem.java
+C:\Users\ghali\Documents\tp1jeeghalilahlou\billing-service\src\main\java\com\example\billing\feign\CustomerRestClient.java
+C:\Users\ghali\Documents\tp1jeeghalilahlou\billing-service\src\main\java\com\example\billing\feign\ProductRestClient.java
+C:\Users\ghali\Documents\tp1jeeghalilahlou\billing-service\src\main\java\com\example\billing\models\Customer.java
+C:\Users\ghali\Documents\tp1jeeghalilahlou\billing-service\src\main\java\com\example\billing\models\Product.java
+C:\Users\ghali\Documents\tp1jeeghalilahlou\billing-service\src\main\java\com\example\billing\repositories\BillRepository.java
+C:\Users\ghali\Documents\tp1jeeghalilahlou\billing-service\src\main\java\com\example\billing\repositories\ProductItemRepository.java
+C:\Users\ghali\Documents\tp1jeeghalilahlou\billing-service\src\main\java\com\example\billing\web\BillRestController.java

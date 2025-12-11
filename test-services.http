@@ -1,0 +1,163 @@
+### E-commerce Microservices API Tests
+
+### 1. Health Checks
+
+### Config Service Health
+GET http://localhost:8888/actuator/health
+
+### Discovery Service (Eureka)
+GET http://localhost:8761
+
+### Gateway Service Health
+GET http://localhost:9999/actuator/health
+
+### Customer Service Health
+GET http://localhost:8081/actuator/health
+
+### Inventory Service Health
+GET http://localhost:8082/actuator/health
+
+### Billing Service Health
+GET http://localhost:8083/actuator/health
+
+###
+### 2. Direct Service Access
+
+### Get All Customers (Direct)
+GET http://localhost:8081/customers
+
+### Get Customer by ID (Direct)
+GET http://localhost:8081/customers/1
+
+### Get All Products (Direct)
+GET http://localhost:8082/products
+
+### Get Product by ID (Direct)
+GET http://localhost:8082/products/1
+
+### Get All Bills (Direct)
+GET http://localhost:8083/bills
+
+### Get Full Bill by ID (Direct)
+GET http://localhost:8083/fullBill/1
+
+###
+### 3. Gateway Access (Recommended)
+
+### Get All Customers via Gateway
+GET http://localhost:9999/customer-service/customers
+
+### Get Customer by ID via Gateway
+GET http://localhost:9999/customer-service/customers/1
+
+### Get All Products via Gateway
+GET http://localhost:9999/inventory-service/products
+
+### Get Product by ID via Gateway
+GET http://localhost:9999/inventory-service/products/1
+
+### Get All Bills via Gateway
+GET http://localhost:9999/billing-service/bills
+
+### Get Full Bill via Gateway (with Customer and Product details)
+GET http://localhost:9999/billing-service/fullBill/1
+
+###
+### 4. Create Operations
+
+### Create New Customer via Gateway
+POST http://localhost:9999/customer-service/customers
+Content-Type: application/json
+
+{
+  "name": "Eva Laurent",
+  "email": "eva@example.com"
+}
+
+### Create New Product via Gateway
+POST http://localhost:9999/inventory-service/products
+Content-Type: application/json
+
+{
+  "name": "AirPods Pro",
+  "price": 249.99,
+  "quantity": 50
+}
+
+###
+### 5. Update Operations
+
+### Update Customer via Gateway
+PUT http://localhost:9999/customer-service/customers/1
+Content-Type: application/json
+
+{
+  "name": "Alice Martin (Updated)",
+  "email": "alice.updated@example.com"
+}
+
+### Update Product via Gateway
+PUT http://localhost:9999/inventory-service/products/1
+Content-Type: application/json
+
+{
+  "name": "Laptop Dell XPS 15 (Updated)",
+  "price": 1399.99,
+  "quantity": 75
+}
+
+###
+### 6. Config Server Tests
+
+### Get Customer Service Configuration
+GET http://localhost:8888/customer-service/default
+
+### Get Inventory Service Configuration
+GET http://localhost:8888/inventory-service/default
+
+### Get Billing Service Configuration
+GET http://localhost:8888/billing-service/default
+
+### Get Gateway Service Configuration
+GET http://localhost:8888/gateway-service/default
+
+###
+### 7. Actuator Endpoints
+
+### Customer Service Metrics
+GET http://localhost:8081/actuator/metrics
+
+### Inventory Service Info
+GET http://localhost:8082/actuator/info
+
+### Billing Service Beans
+GET http://localhost:8083/actuator/beans
+
+### Gateway Routes
+GET http://localhost:9999/actuator/gateway/routes
+
+###
+### 8. H2 Console Access
+### Note: Access via browser
+### Customer DB: http://localhost:8081/h2-console (jdbc:h2:mem:customer-db)
+### Inventory DB: http://localhost:8082/h2-console (jdbc:h2:mem:inventory-db)
+### Billing DB: http://localhost:8083/h2-console (jdbc:h2:mem:billing-db)
+
+###
+### 9. Service Discovery
+
+### Get Registered Services from Eureka
+GET http://localhost:8761/eureka/apps
+Accept: application/json
+
+###
+### 10. Pagination Tests
+
+### Get Customers with Pagination
+GET http://localhost:9999/customer-service/customers?page=0&size=2
+
+### Get Products with Pagination
+GET http://localhost:9999/inventory-service/products?page=0&size=3
+
+###
+

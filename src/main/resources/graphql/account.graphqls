@@ -1,0 +1,43 @@
+type Query {
+    bankAccounts: [BankAccountResponseDTO]
+    bankAccount(id: String!): BankAccountResponseDTO
+    bankAccountsByOwner(owner: String!): [BankAccountResponseDTO]
+    bankAccountsByType(type: String!): [BankAccountResponseDTO]
+    activeBankAccounts: [BankAccountResponseDTO]
+}
+
+type Mutation {
+    createBankAccount(input: BankAccountRequestDTO!): BankAccountResponseDTO
+    updateBankAccount(id: String!, input: BankAccountRequestDTO!): BankAccountResponseDTO
+    deleteBankAccount(id: String!): Boolean
+    transferMoney(transferRequest: TransferRequestDTO!): String
+}
+
+type BankAccountResponseDTO {
+    id: String!
+    createdAt: String!
+    balance: Float!
+    currency: String!
+    type: AccountType!
+    owner: String!
+    active: Boolean!
+}
+
+input BankAccountRequestDTO {
+    balance: Float!
+    currency: String!
+    type: AccountType!
+    owner: String!
+}
+
+input TransferRequestDTO {
+    sourceAccountId: String!
+    destinationAccountId: String!
+    amount: Float!
+}
+
+enum AccountType {
+    CURRENT_ACCOUNT
+    SAVING_ACCOUNT
+    PROFESSIONAL_ACCOUNT
+}

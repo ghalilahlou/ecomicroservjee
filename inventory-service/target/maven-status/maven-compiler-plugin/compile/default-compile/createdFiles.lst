@@ -1,0 +1,4 @@
+com\example\inventory\entities\Product.class
+com\example\inventory\repositories\ProductRepository.class
+com\example\inventory\entities\Product$ProductBuilder.class
+com\example\inventory\InventoryServiceApplication.class

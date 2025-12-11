@@ -1,0 +1,12 @@
+com\example\billing\models\Product.class
+com\example\billing\repositories\BillRepository.class
+com\example\billing\models\Customer.class
+com\example\billing\web\BillRestController.class
+com\example\billing\feign\CustomerRestClient.class
+com\example\billing\entities\ProductItem$ProductItemBuilder.class
+com\example\billing\entities\ProductItem.class
+com\example\billing\feign\ProductRestClient.class
+com\example\billing\entities\Bill.class
+com\example\billing\repositories\ProductItemRepository.class
+com\example\billing\BillingServiceApplication.class
+com\example\billing\entities\Bill$BillBuilder.class

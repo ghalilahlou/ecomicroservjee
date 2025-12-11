@@ -1,0 +1,108 @@
+### Test de l'API de gestion des comptes bancaires
+### Base URL: http://localhost:8080
+
+### 1. Récupérer tous les comptes
+GET http://localhost:8080/api/bankAccounts
+
+### 2. Récupérer un compte par ID
+GET http://localhost:8080/api/bankAccounts/acc-001
+
+### 3. Créer un nouveau compte
+POST http://localhost:8080/api/bankAccounts
+Content-Type: application/json
+
+{
+  "balance": 2000.0,
+  "currency": "EUR",
+  "type": "CURRENT_ACCOUNT",
+  "owner": "Alice Martin"
+}
+
+### 4. Mettre à jour un compte
+PUT http://localhost:8080/api/bankAccounts/acc-001
+Content-Type: application/json
+
+{
+  "balance": 1500.0,
+  "currency": "EUR",
+  "type": "CURRENT_ACCOUNT",
+  "owner": "John Doe"
+}
+
+### 5. Supprimer un compte
+DELETE http://localhost:8080/api/bankAccounts/acc-005
+
+### 6. Rechercher des comptes par propriétaire
+GET http://localhost:8080/api/bankAccounts/owner/John Doe
+
+### 7. Rechercher des comptes par type
+GET http://localhost:8080/api/bankAccounts/type/CURRENT_ACCOUNT
+
+### 8. Rechercher des comptes actifs
+GET http://localhost:8080/api/bankAccounts/active
+
+### 9. Effectuer un virement
+POST http://localhost:8080/api/bankAccounts/transfer
+Content-Type: application/json
+
+{
+  "sourceAccountId": "acc-001",
+  "destinationAccountId": "acc-002",
+  "amount": 500.0
+}
+
+### Tests Spring Data REST
+
+### 10. Récupérer tous les comptes via Spring Data REST
+GET http://localhost:8080/api/bankAccounts
+
+### 11. Récupérer un compte avec projection
+GET http://localhost:8080/api/bankAccounts/acc-001?projection=accountProjection
+
+### Tests GraphQL (utiliser l'interface GraphiQL à http://localhost:8080/graphiql)
+
+### Requête GraphQL pour récupérer tous les comptes
+# query {
+#   bankAccounts {
+#     id
+#     createdAt
+#     balance
+#     currency
+#     type
+#     owner
+#     active
+#   }
+# }
+
+### Requête GraphQL pour créer un compte
+# mutation {
+#   createBankAccount(input: {
+#     balance: 3000.0
+#     currency: "USD"
+#     type: SAVING_ACCOUNT
+#     owner: "Charlie Brown"
+#   }) {
+#     id
+#     balance
+#     currency
+#     type
+#   }
+# }
+
+### Requête GraphQL pour effectuer un virement
+# mutation {
+#   transferMoney(transferRequest: {
+#     sourceAccountId: "acc-001"
+#     destinationAccountId: "acc-002"
+#     amount: 100.0
+#   })
+# }
+
+### Documentation Swagger
+### Accéder à http://localhost:8080/swagger-ui.html pour voir la documentation interactive
+
+### Console H2
+### Accéder à http://localhost:8080/h2-console pour voir la base de données
+### URL JDBC: jdbc:h2:mem:account-db
+### Username: sa
+### Password: (vide)
