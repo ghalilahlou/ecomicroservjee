@@ -36,34 +36,30 @@ Accès rapides :
 Les fichiers sont déjà dans `image/`. Les liens ci-dessous utilisent l’encodage des espaces et apostrophes pour s’afficher correctement sur GitHub. Chaque image est suivie d’une courte légende.
 
 ### Interface Angular (front)
-- ![Clients](image/Capture%20d%27%C3%A9cran%202025-12-11%20083057.png)  
-  _Vue liste des clients : tableau CRUD (ajout/édition/suppression), navigation via la passerelle._
-- ![Produits](image/Capture%20d%27%C3%A9cran%202025-12-11%20083142.png)  
-  _Catalogue produits avec quantités disponibles et prix, issu de `inventory-service` via le Gateway._
-- ![Factures](image/Capture%20d%27%C3%A9cran%202025-12-11%20083332.png)  
-  _Liste des factures consolidées : chaque ligne agrège client et détails produits récupérés par Feign._
-- ![Navigation / factures](image/Capture%20d%27%C3%A9cran%202025-12-11%20083349.png)  
-  _Navigation front pour basculer entre modules (clients, produits, factures) exposés par la passerelle._
-- ![Formulaires produits](image/Capture%20d%27%C3%A9cran%202025-12-11%20083444.png)  
-  _Formulaire de création/modification produit ; validation côté front, persistance via API inventaire._
-- ![CRUD clients](image/Capture%20d%27%C3%A9cran%202025-12-11%20083820.png)  
-  _Formulaire client : saisie nom/email, enregistrement dans `customer-service` via le Gateway._
-- ![CRUD produits](image/Capture%20d%27%C3%A9cran%202025-12-11%20084150.png)  
-  _Édition de produit avec stock ; synchronisé avec la base H2 du service inventaire._
-- ![CRUD factures](image/Capture%20d%27%C3%A9cran%202025-12-11%20084321.png)  
-  _Création de facture : sélection d’un client et de lignes produit, calcul total côté front puis enregistrement._
+- ![Clients (CRUD)](image/Capture%20d%27%C3%A9cran%202025-12-11%20090400.png)  
+  _Liste des clients avec actions modifier/supprimer, consommée via `customer-service` derrière le Gateway._
+- ![Produits (CRUD + stock)](image/Capture%20d%27%C3%A9cran%202025-12-11%20090409.png)  
+  _Inventaire produits, prix et quantités ; données servies par `inventory-service` via la passerelle._
+- ![Création facture](image/Capture%20d%27%C3%A9cran%202025-12-11%20090420.png)  
+  _Formulaire de facture : saisie clientId et date ; l’enregistrement appelle `billing-service` qui agrège client/produits._
+- ![Clients (services arrêtés)](image/Capture%20d%27%C3%A9cran%202025-12-11%20085514.png)  
+  _Vue front affichant l’erreur de chargement quand les services back ne sont pas démarrés._
 
 ### Services, passerelle, consoles
-- ![Services dans l’IDE / Eureka](image/Capture%20d%27%C3%A9cran%202025-12-11%20085457.png)  
-  _Vue IDE montrant les modules Spring Boot : config, discovery, gateway, customer, inventory, billing._
-- ![Passerelle / Eureka](image/Capture%20d%27%C3%A9cran%202025-12-11%20085514.png)  
-  _Tableau Eureka listant les instances enregistrées et le gateway ; routage dynamique activé._
-- ![Gateway et services démarrés](image/Capture%20d%27%C3%A9cran%202025-12-11%20090400.png)  
-  _Console de démarrage du gateway et des services métier : chaque service expose ses endpoints via Eureka._
-- ![H2 console / Inventory](image/Capture%20d%27%C3%A9cran%202025-12-11%20090409.png)  
-  _Console H2 du service inventaire : tables produits/stock stockées en mémoire pour la démo._
-- ![Logs de démarrage](image/Capture%20d%27%C3%A9cran%202025-12-11%20090420.png)  
-  _Logs Spring Boot montrant le bootstrap, le binding Config Server et l’enregistrement Eureka._
+- ![Eureka Dashboard](image/Capture%20d%27%C3%A9cran%202025-12-11%20083057.png)  
+  _Instances enregistrées : gateway, customer, inventory, billing ; santé et URLs exposées._
+- ![Customer-service HAL](image/Capture%20d%27%C3%A9cran%202025-12-11%20083116.png)  
+  _Endpoints HAL du service clients (`/customers`, `/profile`)._
+- ![Billing/Inventory HAL](image/Capture%20d%27%C3%A9cran%202025-12-11%20083142.png)  
+  _Racine HAL du service billing/inventory : liens `productItems`, `bills`, `profile`._
+- ![IDE – customer logs](image/Capture%20d%27%C3%A9cran%202025-12-11%20083332.png)  
+  _Vue Services IntelliJ : instances Spring Boot et logs du `customer-service` (enregistrement Eureka, requêtes)._
+- ![IDE – inventory logs](image/Capture%20d%27%C3%A9cran%202025-12-11%20083349.png)  
+  _Logs du `inventory-service` avec données préchargées (produits, quantités) et enregistrement Eureka._
+- ![Console H2 – inventory](image/Capture%20d%27%C3%A9cran%202025-12-11%20084321.png)  
+  _Connexion à la base H2 `jdbc:h2:mem:inventory-db` (mode mémoire) du service inventaire._
+- ![Alerte CSP navigateur](image/Capture%20d%27%C3%A9cran%202025-12-10%20095908.png)  
+  _Avertissement Content-Security-Policy côté navigateur (blocage de `eval`) à traiter si vous chargez des scripts externes._
 
 > Astuce : si vous préférez des noms plus courts (ex. `clients.png`, `products.png`), renommez les fichiers dans `image/` et mettez à jour les liens ci-dessus.
 
