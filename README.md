@@ -33,24 +33,37 @@ Accès rapides :
 - H2 consoles : services 8081/8082/8083  
 
 ## Captures d’écran (interface et services)
-Les fichiers sont déjà dans `image/`. Les liens ci-dessous utilisent l’encodage des espaces et apostrophes pour s’afficher correctement sur GitHub.
+Les fichiers sont déjà dans `image/`. Les liens ci-dessous utilisent l’encodage des espaces et apostrophes pour s’afficher correctement sur GitHub. Chaque image est suivie d’une courte légende.
 
-### Interface Angular
-- ![Clients](image/Capture%20d%27%C3%A9cran%202025-12-11%20083057.png)
-- ![Produits](image/Capture%20d%27%C3%A9cran%202025-12-11%20083142.png)
-- ![Factures](image/Capture%20d%27%C3%A9cran%202025-12-11%20083332.png)
-- ![Navigation / factures](image/Capture%20d%27%C3%A9cran%202025-12-11%20083349.png)
-- ![Formulaires produits](image/Capture%20d%27%C3%A9cran%202025-12-11%20083444.png)
-- ![CRUD clients](image/Capture%20d%27%C3%A9cran%202025-12-11%20083820.png)
-- ![CRUD produits](image/Capture%20d%27%C3%A9cran%202025-12-11%20084150.png)
-- ![CRUD factures](image/Capture%20d%27%C3%A9cran%202025-12-11%20084321.png)
+### Interface Angular (front)
+- ![Clients](image/Capture%20d%27%C3%A9cran%202025-12-11%20083057.png)  
+  _Vue liste des clients : tableau CRUD (ajout/édition/suppression), navigation via la passerelle._
+- ![Produits](image/Capture%20d%27%C3%A9cran%202025-12-11%20083142.png)  
+  _Catalogue produits avec quantités disponibles et prix, issu de `inventory-service` via le Gateway._
+- ![Factures](image/Capture%20d%27%C3%A9cran%202025-12-11%20083332.png)  
+  _Liste des factures consolidées : chaque ligne agrège client et détails produits récupérés par Feign._
+- ![Navigation / factures](image/Capture%20d%27%C3%A9cran%202025-12-11%20083349.png)  
+  _Navigation front pour basculer entre modules (clients, produits, factures) exposés par la passerelle._
+- ![Formulaires produits](image/Capture%20d%27%C3%A9cran%202025-12-11%20083444.png)  
+  _Formulaire de création/modification produit ; validation côté front, persistance via API inventaire._
+- ![CRUD clients](image/Capture%20d%27%C3%A9cran%202025-12-11%20083820.png)  
+  _Formulaire client : saisie nom/email, enregistrement dans `customer-service` via le Gateway._
+- ![CRUD produits](image/Capture%20d%27%C3%A9cran%202025-12-11%20084150.png)  
+  _Édition de produit avec stock ; synchronisé avec la base H2 du service inventaire._
+- ![CRUD factures](image/Capture%20d%27%C3%A9cran%202025-12-11%20084321.png)  
+  _Création de facture : sélection d’un client et de lignes produit, calcul total côté front puis enregistrement._
 
-### Services, ports et consoles
-- ![Services dans l’IDE / Eureka](image/Capture%20d%27%C3%A9cran%202025-12-11%20085457.png)
-- ![Passerelle / Eureka](image/Capture%20d%27%C3%A9cran%202025-12-11%20085514.png)
-- ![Gateway et services démarrés](image/Capture%20d%27%C3%A9cran%202025-12-11%20090400.png)
-- ![H2 console / Inventory](image/Capture%20d%27%C3%A9cran%202025-12-11%20090409.png)
-- ![Logs de démarrage](image/Capture%20d%27%C3%A9cran%202025-12-11%20090420.png)
+### Services, passerelle, consoles
+- ![Services dans l’IDE / Eureka](image/Capture%20d%27%C3%A9cran%202025-12-11%20085457.png)  
+  _Vue IDE montrant les modules Spring Boot : config, discovery, gateway, customer, inventory, billing._
+- ![Passerelle / Eureka](image/Capture%20d%27%C3%A9cran%202025-12-11%20085514.png)  
+  _Tableau Eureka listant les instances enregistrées et le gateway ; routage dynamique activé._
+- ![Gateway et services démarrés](image/Capture%20d%27%C3%A9cran%202025-12-11%20090400.png)  
+  _Console de démarrage du gateway et des services métier : chaque service expose ses endpoints via Eureka._
+- ![H2 console / Inventory](image/Capture%20d%27%C3%A9cran%202025-12-11%20090409.png)  
+  _Console H2 du service inventaire : tables produits/stock stockées en mémoire pour la démo._
+- ![Logs de démarrage](image/Capture%20d%27%C3%A9cran%202025-12-11%20090420.png)  
+  _Logs Spring Boot montrant le bootstrap, le binding Config Server et l’enregistrement Eureka._
 
 > Astuce : si vous préférez des noms plus courts (ex. `clients.png`, `products.png`), renommez les fichiers dans `image/` et mettez à jour les liens ci-dessus.
 
